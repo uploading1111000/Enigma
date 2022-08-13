@@ -10,5 +10,3 @@ def indexCoincidence(text):
     
 def getNGrams(text,n):
     return [text[i:i+n] for i in range(len(text)-n + 1)]
-
-print(getNGrams("Happy birthday",2))
