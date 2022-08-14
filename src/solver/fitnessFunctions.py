@@ -17,3 +17,7 @@ def generateAllNGrams(n): #recursively finds all the possible ngrams of length n
     else:
         lower = generateAllNGrams(n-1)
         return [chr(x) + t for t in lower for x in range(65,91)]
+
+def countNGrams(text,n,scores):
+    for i in range(len(text)-n+1):
+        scores[text[i:i+n]] += 1

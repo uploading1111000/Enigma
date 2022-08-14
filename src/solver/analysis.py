@@ -4,6 +4,8 @@ import re
 from os import walk, remove
 from solver.fitnessFunctions import generateAllNGrams, getNGrams
 import json
+
+from .fitnessFunctions import countNGrams
 #unzips all zip files to the path
 def unzip(path):
     result = list(Path(path).rglob("*.[zZ][iI][pP]"))
@@ -77,8 +79,6 @@ def collect(path):
 def ngram(file,n):
     scores = {x:0 for x in generateAllNGrams(n)}
     with open(file,"r") as f: data = f.read()
-    nGrams = getNGrams(data,n)
-    for gram in scores.keys():
-        scores[gram] = nGrams.count(gram) / len(nGrams)
+    countNGrams(data,n,scores)
     with open(file[:-4:] + str(n) + "gram.json", "w") as f: json.dump(scores,f)
     
