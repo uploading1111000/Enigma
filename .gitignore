@@ -3,3 +3,4 @@ src/solver/english
 *.pyc
 *~
 *.swp
+src/solver/final4gram.json
