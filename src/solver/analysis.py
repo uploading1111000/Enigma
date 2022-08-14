@@ -39,18 +39,12 @@ def depreface(path, line):
             e = "ascii"
         with open(path + "/" + x,"r", encoding=e) as f:
             t = f.readline()
-            n = 0
             while t:
-                if n < 50:
-                    n += 1
-                    print(t)
                 if l.match(t):
-                    v = ""
-                    while t:
-                        t = f.readline()
-                        v = v + t + "\n"
+                    c = f.readlines()
+                    print(c[0])
                     with open(path + "/deprefaced/s" + x[:5] + ".txt", "w", encoding=e) as g:
-                        g.write(v)
+                        g.writelines(c)
                     break 
                 t = f.readline()
             else:
