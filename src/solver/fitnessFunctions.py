@@ -1,5 +1,4 @@
 import json
-from copy import deepcopy
 
 def indexCoincidence(text):
     frequencies = [0 for x in range(26)]
@@ -29,22 +28,23 @@ def getscores(file):
     with open(file,"r") as f:
         return json.load(f)
 
-print("generating ngram dictionaries")
+"""print("generating ngram dictionaries")
 oneGram = generateAllNGrams(3)
-twoGram = generateAllNGrams(3)
+twoGram = generateAllNGrams(3)              #not in use
 threeGram = generateAllNGrams(3)
-#fourGram = generateAllNGrams(4)
+#fourGram = generateAllNGrams(4)"""
 
 print("importing ngram frequencies")
 frequencies = [
-    getscores("final1gram.json"),
-    getscores("final2gram.json"),
-    getscores("final3gram.json"),
-    #getscores("final4gram.json")
+    getscores("src/solver/final1gram.json"),
+    getscores("src/solver/final2gram.json"),
+    getscores("src/solver/final3gram.json"),
+    #getscores("src/solver/final4gram.json")
 ]
 
 def nGramScore(text,n):
-    grams = getNGrams(text,n)
+    letters = "".join([chr(x+65) for x in text]) #makes it possible to read numbers directly from internal
+    grams = getNGrams(letters,n)
     score = 0
     for gram in grams:
         score += (frequencies[n-1])[gram]

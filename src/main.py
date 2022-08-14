@@ -6,8 +6,9 @@ rp = input("Key: ")
 m = machineInstance(wheelorder = w, ringposition = rs, rotorposition = rp, plugboard = pb)
 while True:
     print(m.encryptText(input("Text: ")))"""
-import solver.analysis
-#solver.analysis.depreface("src/solver/english",r"\*\*\* ?START OF (THE|THIS) PROJECT GUTENBERG EBOOK [\S ]* ?\*\*\* *")
-#solver.analysis.makeEngimable("src/solver/english")
-#solver.analysis.collect("src/solver/english")
-solver.analysis.ngram("src/solver/english/final.txt",5)
+import solver.fitnessFunctions
+import testing.fitnessTests
+testing.fitnessTests.testFuncSimple(solver.fitnessFunctions.indexCoincidence)
+testing.fitnessTests.testFuncSimple(solver.fitnessFunctions.nGramScore,1)
+testing.fitnessTests.testFuncSimple(solver.fitnessFunctions.nGramScore,2)
+testing.fitnessTests.testFuncSimple(solver.fitnessFunctions.nGramScore,3)

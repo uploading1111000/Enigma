@@ -34,8 +34,8 @@ def turnrotors(wheelorder,rotorposition):
     if rotorposition[1] in notches[wheelorder[1]]:
         rotorposition[1] = (rotorposition[1] + 1) % 26
         rotorposition[2] = (rotorposition[2] + 1) % 26
-    #then rightmost wheel - this may lead to middle wheel stepping twice often but i believe this shouldn't be possible during normal operation
-    if rotorposition[0] in notches[wheelorder[0]]:
+    #then rightmost wheel - this may lead to middle wheel stepping twice often but i believe this shouldn't be possible during normal operation - NOT TRUE FIXED BY ELIF
+    elif rotorposition[0] in notches[wheelorder[0]]:
         rotorposition[1] = (rotorposition[1] + 1) % 26
     rotorposition[0] = (rotorposition[0] + 1) % 26 #finally a normal step
     #rotor[3] (if it exists) does not step
