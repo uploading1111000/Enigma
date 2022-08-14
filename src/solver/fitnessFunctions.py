@@ -10,3 +10,9 @@ def indexCoincidence(text):
     
 def getNGrams(text,n):
     return [text[i:i+n] for i in range(len(text)-n + 1)]
+
+def generateAllNGrams(n):
+    if n == 1:
+        return [chr(x) for x in range(65,91)]
+    else:
+        return [chr(x) + t for t in generateAllNGrams(n-1) for x in range(65,91)]

@@ -2,7 +2,8 @@ from pathlib import Path
 import zipfile
 import re
 from os import walk, remove
-
+from solver.fitnessFunctions import generateAllNGrams, getNGrams
+import json
 #unzips all zip files to the path
 def unzip(path):
     result = list(Path(path).rglob("*.[zZ][iI][pP]"))
@@ -71,3 +72,12 @@ def collect(path):
             v = v + f.read()
     with open(path + "/final.txt", "w") as f:
         f.write(v)
+
+def ngram(file,n):
+    scores = {x:0 for x in generateAllNGrams(n)}
+    with open(file,"r") as f: data = f.read()
+    nGrams = getNGrams(data,n)
+    for gram in scores.keys():
+        scores[gram] = nGrams.count(gram)
+    with open(file[:-3:] + str(n) + "gram.txt", "w") as f: json.dump(scores,f)
+    
