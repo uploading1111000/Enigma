@@ -47,3 +47,16 @@ def depreface(path, line):
                 t = f.readline()
             else:
                 print("Line not found in " + x)
+
+def makeEngimable(path):
+    dots = re.compile(r"\.")
+    noLetters = re.compile(r"[^a-z^A-Z]")
+    filenames = next(walk(path), (None, None, []))[2]
+    for x in filenames:
+        with open(path + "/" + x,"r", encoding="latin-1") as f:
+            t = f.read()
+            t = dots.sub("X",t)
+            t = noLetters.sub("",t)
+            t = t.upper()
+        with open(path + "/enigmable/" + x,"w") as f:
+            f.write(t)
