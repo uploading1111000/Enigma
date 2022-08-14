@@ -42,7 +42,6 @@ def depreface(path, line):
             while t:
                 if l.match(t):
                     c = f.readlines()
-                    print(c[0])
                     with open(path + "/deprefaced/s" + x[:5] + ".txt", "w", encoding=e) as g:
                         g.writelines(c)
                     break 
