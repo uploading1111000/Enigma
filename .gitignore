@@ -1,4 +1,5 @@
 src/solver/deutsch
 src/solver/english
 *.pyc
-
+*~
+*.swp
