@@ -7,4 +7,4 @@ m = machineInstance(wheelorder = w, ringposition = rs, rotorposition = rp, plugb
 while True:
     print(m.encryptText(input("Text: ")))"""
 import solver.analysis
-solver.analysis.depreface("src/solver/deutsch")
+solver.analysis.depreface("src/solver/deutsch",r"\*\*\*START OF THE PROJECT GUTENBERG EBOOK [A-Z ]*\*\*\*")

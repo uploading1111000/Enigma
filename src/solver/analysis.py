@@ -1,5 +1,6 @@
 from pathlib import Path
 import zipfile
+import re
 from os import walk, remove
 
 #unzips all zip files to the path
@@ -26,12 +27,13 @@ def cull(path, max=True):
 
 #removes prefaces
 def depreface(path, line):
+    l = re.compile(line)
     filenames = next(walk(path), (None, None, []))[2]
     for x in filenames:
         with open(path + "/" + x,"r") as f:
             t = f.readline()
             while t:
-                if t == line:
+                if l.fullmatch(t):
                     v = ""
                     while t:
                         t = f.readline()
