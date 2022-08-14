@@ -32,9 +32,9 @@ def depreface(path, line):
     for x in filenames:
         try:
             if x[6] == "0":
-                e = "latin-1"
-            elif x[6] == "8":
                 e = "utf-8"
+            elif x[6] == "8":
+                e = "latin-1"
         except IndexError:
             e = "ascii"
         with open(path + "/" + x,"r", encoding=e) as f:
