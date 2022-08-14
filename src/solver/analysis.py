@@ -30,19 +30,18 @@ def depreface(path, line):
     l = re.compile(line)
     filenames = next(walk(path), (None, None, []))[2]
     for x in filenames:
+        e = "latin-1"
         try:
             if x[6] == "0":
                 e = "utf-8"
-            elif x[6] == "8":
-                e = "latin"
         except IndexError:
-            e = "ascii"
+            pass
         with open(path + "/" + x,"r", encoding=e) as f:
             t = f.readline()
             while t:
                 if l.match(t):
                     c = f.readlines()
-                    with open(path + "/deprefaced/s" + x[:5] + ".txt", "w", encoding=e) as g:
+                    with open(path + "/deprefaced/" + x[:5] + ".txt", "w", encoding=e) as g:
                         g.writelines(c)
                     break 
                 t = f.readline()
