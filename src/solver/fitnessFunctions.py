@@ -1,3 +1,6 @@
+import json
+from copy import deepcopy
+
 def indexCoincidence(text):
     frequencies = [0 for x in range(26)]
     for x in text:
@@ -21,3 +24,28 @@ def generateAllNGrams(n): #recursively finds all the possible ngrams of length n
 def countNGrams(text,n,scores):
     for i in range(len(text)-n+1):
         scores[text[i:i+n]] += 1
+
+def getscores(file):
+    with open(file,"r") as f:
+        return json.load(f)
+
+print("generating ngram dictionaries")
+oneGram = generateAllNGrams(3)
+twoGram = generateAllNGrams(3)
+threeGram = generateAllNGrams(3)
+#fourGram = generateAllNGrams(4)
+
+print("importing ngram frequencies")
+frequencies = [
+    getscores("final1gram.json"),
+    getscores("final2gram.json"),
+    getscores("final3gram.json"),
+    #getscores("final4gram.json")
+]
+
+def nGramScore(text,n):
+    grams = getNGrams(text,n)
+    score = 0
+    for gram in grams:
+        score += (frequencies[n-1])[gram]
+    return score
