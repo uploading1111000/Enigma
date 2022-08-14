@@ -6,5 +6,5 @@ rp = input("Key: ")
 m = machineInstance(wheelorder = w, ringposition = rs, rotorposition = rp, plugboard = pb)
 while True:
     print(m.encryptText(input("Text: ")))"""
-from solver.analysis import unzip
-unzip("src/solver/english")
+import solver.analysis
+solver.analysis.depreface("src/solver/deutsch")
