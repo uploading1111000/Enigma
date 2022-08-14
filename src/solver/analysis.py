@@ -73,11 +73,12 @@ def collect(path):
     with open(path + "/final.txt", "w") as f:
         f.write(v)
 
+#finds ngram occurance data
 def ngram(file,n):
     scores = {x:0 for x in generateAllNGrams(n)}
     with open(file,"r") as f: data = f.read()
     nGrams = getNGrams(data,n)
     for gram in scores.keys():
-        scores[gram] = nGrams.count(gram)
-    with open(file[:-3:] + str(n) + "gram.txt", "w") as f: json.dump(scores,f)
+        scores[gram] = nGrams.count(gram) / len(nGrams)
+    with open(file[:-4:] + str(n) + "gram.json", "w") as f: json.dump(scores,f)
     

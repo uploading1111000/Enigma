@@ -11,8 +11,9 @@ def indexCoincidence(text):
 def getNGrams(text,n):
     return [text[i:i+n] for i in range(len(text)-n + 1)]
 
-def generateAllNGrams(n):
+def generateAllNGrams(n): #recursively finds all the possible ngrams of length n by calling recursive
     if n == 1:
         return [chr(x) for x in range(65,91)]
     else:
-        return [chr(x) + t for t in generateAllNGrams(n-1) for x in range(65,91)]
+        lower = generateAllNGrams(n-1)
+        return [chr(x) + t for t in lower for x in range(65,91)]
