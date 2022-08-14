@@ -34,7 +34,7 @@ def depreface(path, line):
             if x[6] == "0":
                 e = "utf-8"
             elif x[6] == "8":
-                e = "latin-1"
+                e = "latin"
         except IndexError:
             e = "ascii"
         with open(path + "/" + x,"r", encoding=e) as f:
@@ -51,6 +51,7 @@ def depreface(path, line):
                         v = v + t + "\n"
                     with open(path + "/deprefaced/s" + x[:5] + ".txt", "w", encoding=e) as g:
                         g.write(v)
+                    break 
                 t = f.readline()
             else:
                 print("Line not found in " + x)
