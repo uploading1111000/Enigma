@@ -80,5 +80,7 @@ def ngram(file,n):
     scores = {x:0 for x in generateAllNGrams(n)}
     with open(file,"r") as f: data = f.read()
     countNGrams(data,n,scores)
+    for k,v in scores.items():
+        scores[k] = v / (len(data) - n + 1)
     with open(file[:-4:] + str(n) + "gram.json", "w") as f: json.dump(scores,f)
     

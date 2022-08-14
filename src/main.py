@@ -10,4 +10,4 @@ import solver.analysis
 #solver.analysis.depreface("src/solver/english",r"\*\*\* ?START OF (THE|THIS) PROJECT GUTENBERG EBOOK [\S ]* ?\*\*\* *")
 #solver.analysis.makeEngimable("src/solver/english")
 #solver.analysis.collect("src/solver/english")
-solver.analysis.ngram("src/solver/english/final.txt",2)
+solver.analysis.ngram("src/solver/english/final.txt",5)
