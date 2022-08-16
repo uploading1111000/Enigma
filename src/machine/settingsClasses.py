@@ -1,4 +1,5 @@
 import json
+from machine.conversions import *
 class availableSettings:
     #defaults to Enigma I specification
     rotorDefault = [
@@ -63,5 +64,5 @@ class availableSettings:
         pass
 
 class settings:
-    def __init__(self, template: availableSettings,*args):
+    def __init__(self, template: availableSettings,**kwargs):
         pass
